@@ -21,4 +21,7 @@ public class Phone implements Serializable {
         return number;
     }
 
+    public Phone deepCopy() {
+        return new Phone(type, number);
+    }
 }

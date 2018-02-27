@@ -20,6 +20,12 @@ public class Employee implements Serializable {
 		this.phones = phones;
 	}
 
+	public Employee(Employee other) {
+		name = other.name;
+		dateOfBirth = other.dateOfBirth;
+		phones = other.phones.stream().map(p -> p.deepCopy()).collect(Collectors.toList());
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -32,4 +38,7 @@ public class Employee implements Serializable {
 		return Collections.unmodifiableList(phones);
 	}
 
+	public Employee deepCopy() {
+		return new Employee(this);
+	}
 }
